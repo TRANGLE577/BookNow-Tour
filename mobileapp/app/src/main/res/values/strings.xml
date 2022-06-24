@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Travel App</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Xin chào bạn,</string>
+    <string name="nav_header_subtitle">Đăng ký để trờ thành hội viên Travel</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_refresh">Tải Dữ Liệu</string>
+
+    <string name="menu_home">Trang Chủ</string>
+    <string name="menu_booking">Danh Sách Đặt Vé</string>
+    <string name="menu_history">Lịch Sử Đặt Vé</string>
+    <string name="menu_logout">Đăng Xuất</string>
+
+    <string name="title_activity_login">Đăng Nhập</string>
+    <string name="title_activity_register">Đăng Ký</string>
+    <string name="title_activity_forgot_password">Quên mật khẩu</string>
+    <string name="title_activity_booking">Danh Sách Đặt Vé</string>
+    <string name="title_activity_history">Lịch Sử Đặt Vé</string>
+    <string name="title_activity_detail">Thông Tin Tour</string>
+
+</resources>

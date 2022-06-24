@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Frolic | for Tour Operators & Travel Agencies</title>
+    <meta name="author" content="GFX Partner">
+    <meta name="description"
+          content="Frolic | for Tour Operators & Travel Agencies">
+    <meta name="keywords"
+          content="tour, ice, trip, travel, agency, life, vacation, treking, boat, walking, climbing, transition, svg, html, css">
+
+    <!-- FAVICON FILES -->
+    <link th:href="@{/frontend/ico/apple-touch-icon-144-precomposed.png}"
+          rel="apple-touch-icon" sizes="144x144">
+    <link th:href="@{/frontend/ico/apple-touch-icon-114-precomposed.png}"
+          rel="apple-touch-icon" sizes="114x114">
+    <link th:href="@{/frontend/ico/apple-touch-icon-72-precomposed.png}"
+          rel="apple-touch-icon" sizes="72x72">
+    <link th:href="@{/frontend/ico/apple-touch-icon-57-precomposed.png}"
+          rel="apple-touch-icon">
+    <link th:href="@{/frontend/ico/favicon.png}" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" th:href="@{/frontend/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/daterangepicker.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/style.css}">
+</head>
+<body>
+<div th:replace="/frontend/fragments/menu :: menu"></div>
+
+<section class="checkout-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <small>FROM SKAGEN</small>
+                <h2>Take a Walk on the Green Side</h2>
+            </div>
+            <!-- end col-8 -->
+            <div class="col-lg-4">
+                <p>Arci varius natoque penatibus et magnis dis turient montes
+                    scetur ridiculus mus cras eleifend.</p>
+                <p>Tour Code: <strong>WS-3597</strong></p>
+            </div>
+            <!-- end col-4 -->
+            <div class="col-12">
+                <div class="info-box">Aug 30th 2018<i class="fa fa-angle-down"
+                                                      data-toggle="tooltip"
+                                                      data-placement="bottom"
+                                                      title="Departure Date"></i>
+                </div>
+                <!-- end info-box -->
+                <div class="info-box">12:30 AM<i class="fa fa-angle-down"
+                                                 data-toggle="tooltip"
+                                                 data-placement="bottom"
+                                                 title="Departure Time"></i>
+                </div>
+                <!-- end info-box -->
+                <div class="info-box">2 Adults + 1 Child<i
+                        class="fa fa-angle-down" data-toggle="tooltip"
+                        data-placement="bottom" title="Total 3 Passengers"></i>
+                </div>
+                <!-- end info-box -->
+                <div class="info-box">
+                    Price: <strong>$1.278</strong><i class="fa fa-angle-down"
+                                                     data-toggle="tooltip"
+                                                     data-placement="bottom"
+                                                     title="Confirmed Price"></i>
+                </div>
+                <!-- end info-box -->
+            </div>
+            <!-- end col-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<section class="checkout p-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="steps">
+                    <h5>Order Summary</h5>
+                </div>
+                <div class="">
+                    <div class="summary">
+                        <div class="summary-head p-2">
+                            <figure><img src="images/summary-thumb.jpg"
+                                         alt="Image"></figure>
+                            <h3>Take a Walk on the Green Side</h3>
+                            <span>Aug 30th 2018 @ 12:30 AM</span>
+                        </div>
+                        <!-- end summary-head -->
+                        <div class="summary-body p-0 mt-3">
+                            <div class="summery-row">
+                                <div>ITEM</div>
+                                <div>PRICE</div>
+                                <div>AMOUNT</div>
+                            </div>
+                            <!-- end flex-row -->
+                            <div class="summery-row white-bg">
+                                <div>ADULTS</div>
+                                <div>$102.18
+                                    <pre><span> X 2</span></pre>
+                                </div>
+                                <div>$204.36</div>
+                            </div>
+                            <!-- end flex-row -->
+                            <div class="summery-row white-bg">
+                                <div>CHILDREN</div>
+                                <div>$74.06
+                                    <pre><span> X 1</span></pre>
+                                </div>
+                                <div>$74.06</div>
+                            </div>
+                            <!-- end flex-row -->
+                            <div class="summery-row">
+                                <div class="total">GRAND TOTAL</div>
+                                <div><strong>$278.42</strong></div>
+                            </div>
+                            <!-- end flex-row -->
+                        </div>
+                        <!-- end summary-body -->
+                    </div>
+                </div>
+                <!-- end steps -->
+            </div>
+            <!-- end col-6 -->
+            <div class="col-lg-8">
+                <div class="steps">
+                    <h5>Payment Information</h5>
+                </div>
+                <div class="passengers-info">
+                    <form>
+                        <div class="inner">
+                            <h6>PASSENGER INFORMATION</h6>
+                            <div class="form-group">
+                                <input type="text" placeholder="First Name">
+                            </div>
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <input type="text" placeholder="Last Name">
+                            </div>
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <input type="text" placeholder="Email Address">
+                            </div>
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <input type="text"
+                                       placeholder="Confirm Email Address">
+                            </div>
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <input type="text" placeholder="Phone">
+                            </div>
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <div class="currency dropdown selectdrop"><a
+                                        href="#" data-toggle="dropdown"
+                                        class="selection">Nationality<span
+                                        class="arrow"><i
+                                        class="fa fa-angle-down"></i></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a>Afghanistan</a></li>
+                                        <li><a>Åland Islands</a></li>
+                                        <li><a>Albania</a></li>
+                                        <li><a>Algeria</a></li>
+                                        <li><a>American Samoa</a></li>
+                                        <li><a>Andorra</a></li>
+                                        <li><a>Angola</a></li>
+                                        <li><a>Anguilla</a></li>
+                                        <li><a>Antarctica</a></li>
+                                        <li><a>Antigua and Barbuda</a></li>
+                                        <li><a>Argentina</a></li>
+                                        <li><a>Armenia</a></li>
+                                        <li><a>Aruba</a></li>
+                                        <li><a>Australia</a></li>
+                                        <li><a>Austria</a></li>
+                                        <li><a>Azerbaijan</a></li>
+                                        <li><a>Bahamas</a></li>
+                                        <li><a>Bahrain</a></li>
+                                        <li><a>Bangladesh</a></li>
+                                        <li><a>Barbados</a></li>
+                                        <li><a>Belarus</a></li>
+                                        <li><a>Belgium</a></li>
+                                        <li><a>Belize</a></li>
+                                        <li><a>Benin</a></li>
+                                        <li><a>Bermuda</a></li>
+                                        <li><a>Bhutan</a></li>
+                                        <li><a>Bolivia</a></li>
+                                        <li><a>Bosnia and Herzegovina</a></li>
+                                        <li><a>Botswana</a></li>
+                                        <li><a>Bouvet Island</a></li>
+                                        <li><a>Brazil</a></li>
+                                        <li><a>British Indian Ocean
+                                            Territory</a></li>
+                                        <li><a>Brunei Darussalam</a></li>
+                                        <li><a>Bulgaria</a></li>
+                                        <li><a>Burkina Faso</a></li>
+                                        <li><a>Burundi</a></li>
+                                        <li><a>Cambodia</a></li>
+                                        <li><a>Cameroon</a></li>
+                                        <li><a>Canada</a></li>
+                                        <li><a>Cape Verde</a></li>
+                                        <li><a>Cayman Islands</a></li>
+                                        <li><a>Central African Republic</a></li>
+                                        <li><a>Chad</a></li>
+                                        <li><a>Chile</a></li>
+                                        <li><a>China</a></li>
+                                        <li><a>Christmas Island</a></li>
+                                        <li><a>Cocos (Keeling) Islands</a></li>
+                                        <li><a>Colombia</a></li>
+                                        <li><a>Comoros</a></li>
+                                        <li><a>Congo</a></li>
+                                        <li><a>Congo, The Democratic Republic of
+                                            The</a></li>
+                                        <li><a>Cook Islands</a></li>
+                                        <li><a>Costa Rica</a></li>
+                                        <li><a>Cote D'ivoire</a></li>
+                                        <li><a>Croatia</a></li>
+                                        <li><a>Cuba</a></li>
+                                        <li><a>Cyprus</a></li>
+                                        <li><a>Czech Republic</a></li>
+                                        <li><a>Denmark</a></li>
+                                        <li><a>Djibouti</a></li>
+                                        <li><a>Dominica</a></li>
+                                        <li><a>Dominican Republic</a></li>
+                                        <li><a>Ecuador</a></li>
+                                        <li><a>Egypt</a></li>
+                                        <li><a>El Salvador</a></li>
+                                        <li><a>Equatorial Guinea</a></li>
+                                        <li><a>Eritrea</a></li>
+                                        <li><a>Estonia</a></li>
+                                        <li><a>Ethiopia</a></li>
+                                        <li><a>Falkland Islands (Malvinas)</a>
+                                        </li>
+                                        <li><a>Faroe Islands</a></li>
+                                        <li><a>Fiji</a></li>
+                                        <li><a>Finland</a></li>
+                                        <li><a>France</a></li>
+                                        <li><a>French Guiana</a></li>
+                                        <li><a>French Polynesia</a></li>
+                                        <li><a>French Southern Territories</a>
+                                        </li>
+                                        <li><a>Gabon</a></li>
+                                        <li><a>Gambia</a></li>
+                                        <li><a>Georgia</a></li>
+                                        <li><a>Germany</a></li>
+                                        <li><a>Ghana</a></li>
+                                        <li><a>Gibraltar</a></li>
+                                        <li><a>Greece</a></li>
+                                        <li><a>Greenland</a></li>
+                                        <li><a>Grenada</a></li>
+                                        <li><a>Guadeloupe</a></li>
+                                        <li><a>Guam</a></li>
+                                        <li><a>Guatemala</a></li>
+                                        <li><a>Guernsey</a></li>
+                                        <li><a>Guinea</a></li>
+                                        <li><a>Guyana</a></li>
+                                        <li><a>Haiti</a></li>
+                                        <li><a>Heard Island and Mcdonald
+                                            Islands</a></li>
+                                        <li><a>Holy See (Vatican City State</a>)
+                                        </li>
+                                        <li><a>Honduras</a></li>
+                                        <li><a>Hong Kong</a></li>
+                                        <li><a>Hungary</a></li>
+                                        <li><a>Iceland</a></li>
+                                        <li><a>India</a></li>
+                                        <li><a>Indonesia</a></li>
+                                        <li><a>Iran, Islamic Republic of</a>
+                                        </li>
+                                        <li><a>Iraq</a></li>
+                                        <li><a>Ireland</a></li>
+                                        <li><a>Isle of Man</a></li>
+                                        <li><a>Israel</a></li>
+                                        <li><a>Italy</a></li>
+                                        <li><a>Jamaica</a></li>
+                                        <li><a>Japan</a></li>
+                                        <li><a>Jersey</a></li>
+                                        <li><a>Jordan</a></li>
+                                        <li><a>Kazakhstan</a></li>
+                                        <li><a>Kenya</a></li>
+                                        <li><a>Kiribati</a></li>
+                                        <li><a>Korea, Democratic People's
+                                            Republic of</a></li>
+                                        <li><a>Korea, Republic of</a></li>
+                                        <li><a>Kuwait</a></li>
+                                        <li><a>Kyrgyzstan</a></li>
+                                        <li><a>Lao People's Democratic
+                                            Republic</a></li>
+                                        <li><a>Latvia</a></li>
+                                        <li><a>Lebanon</a></li>
+                                        <li><a>Lesotho</a></li>
+                                        <li><a>Liberia</a></li>
+                                        <li><a>Libyan Arab Jamahiriya</a></li>
+                                        <li><a>Liechtenstein</a></li>
+                                        <li><a>Lithuania</a></li>
+                                        <li><a>Luxembourg</a></li>
+                                        <li><a>Macao</a></li>
+                                        <li><a>Macedonia, The Former Yugoslav
+                                            Republic of</a></li>
+                                        <li><a>Madagascar</a></li>
+                                        <li><a>Malawi</a></li>
+                                        <li><a>Malaysia</a></li>
+                                        <li><a>Maldives</a></li>
+                                        <li><a>Mali</a></li>
+                                        <li><a>Malta</a></li>
+                                        <li><a>Marshall Islands</a></li>
+                                        <li><a>Martinique</a></li>
+                                        <li><a>Mauritania</a></li>
+                                        <li><a>Mauritius</a></li>
+                                        <li><a>Mayotte</a></li>
+                                        <li><a>Mexico</a></li>
+                                        <li><a>Micronesia, Federated States
+                                            of</a></li>
+                                        <li><a>Moldova, Republic of</a></li>
+                                        <li><a>Monaco</a></li>
+                                        <li><a>Mongolia</a></li>
+                                        <li><a>Montenegro</a></li>
+                                        <li><a>Montserrat</a></li>
+                                        <li><a>Morocco</a></li>
+                                        <li><a>Mozambique</a></li>
+                                        <li><a>Myanmar</a></li>
+                                        <li><a>Namibia</a></li>
+                                        <li><a>Nauru</a></li>
+                                        <li><a>Nepal</a></li>
+                                        <li><a>Netherlands</a></li>
+                                        <li><a>Netherlands Antilles</a></li>
+                                        <li><a>New Caledonia</a></li>
+                                        <li><a>New Zealand</a></li>
+                                        <li><a>Nicaragua</a></li>
+                                        <li><a>Niger</a></li>
+                                        <li><a>Nigeria</a></li>
+                                        <li><a>Niue</a></li>
+                                        <li><a>Norfolk Island</a></li>
+                                        <li><a>Northern Mariana Islands</a></li>
+                                        <li><a>Norway</a></li>
+                                        <li><a>Oman</a></li>
+                                        <li><a>Pakistan</a></li>
+                                        <li><a></a>Palau</li>
+                                        <li><a>Palestinian Territory,
+                                            Occupied</a></li>
+                                        <li><a></a>Panama</li>
+                                        <li><a>Papua New Guinea</a></li>
+                                        <li><a>Paraguay</a></li>
+                                        <li><a>Peru</a></li>
+                                        <li><a>Philippines</a></li>
+                                        <li><a>Pitcairn</a></li>
+                                        <li><a>Poland</a></li>
+                                        <li><a>Portugal</a></li>
+                                        <li><a>Puerto Rico</a></li>
+                                        <li><a>Qatar</a></li>
+                                        <li><a>Reunion</a></li>
+                                        <li><a>Romania</a></li>
+                                        <li><a>Russian Federation</a></li>
+                                        <li><a>Rwanda</a></li>
+                                        <li><a>Saint Helena</a></li>
+                                        <li><a>Saint Kitts and Nevis</a></li>
+                                        <li><a>Saint Lucia</a></li>
+                                        <li><a>Saint Pierre and Miquelon</a>
+                                        </li>
+                                        <li><a>Saint Vincent and The
+                                            Grenadines</a></li>
+                                        <li><a>Samoa</a></li>
+                                        <li><a>San Marino</a></li>
+                                        <li><a>Sao Tome and Principe</a></li>
+                                        <li><a>Saudi Arabia</a></li>
+                                        <li><a>Senegal</a></li>
+                                        <li><a>Serbia</a></li>
+                                        <li><a>Seychelles</a></li>
+                                        <li><a>Sierra Leone</a></li>
+                                        <li><a>Singapore</a></li>
+                                        <li><a>Slovakia</a></li>
+                                        <li><a>Slovenia</a></li>
+                                        <li><a>Solomon Islands</a></li>
+                                        <li><a>Somalia</a></li>
+                                        <li><a>South Africa</a></li>
+                                        <li><a>South Georgia and The South
+                                            Sandwich Islands</a></li>
+                                        <li><a>Spain</a></li>
+                                        <li><a>Sri Lanka</a></li>
+                                        <li><a>Sudan</a></li>
+                                        <li><a>Suriname</a></li>
+                                        <li><a>Svalbard and Jan Mayen</a></li>
+                                        <li><a>Swaziland</a></li>
+                                        <li><a>Sweden</a></li>
+                                        <li><a>Switzerland</a></li>
+                                        <li><a>Syrian Arab Republic</a></li>
+                                        <li><a>Taiwan, Province of China</a>
+                                        </li>
+                                        <li><a>Tajikistan</a></li>
+                                        <li><a>Tanzania, United Republic of</a>
+                                        </li>
+                                        <li><a>Thailand</a></li>
+                                        <li><a>Timor-leste</a></li>
+                                        <li><a>Togo</a></li>
+                                        <li><a>Tokelau</a></li>
+                                        <li><a>Tonga</a></li>
+                                        <li><a>Trinidad and Tobago</a></li>
+                                        <li><a>Tunisia</a></li>
+                                        <li><a>Turkey</a></li>
+                                        <li><a>Turkmenistan</a></li>
+                                        <li><a>Turks and Caicos Islands</a></li>
+                                        <li><a>Tuvalu</a></li>
+                                        <li><a>Uganda</a></li>
+                                        <li><a>Ukraine</a></li>
+                                        <li><a>United Arab Emirates</a></li>
+                                        <li><a>United Kingdom</a></li>
+                                        <li><a>United States</a></li>
+                                        <li><a>United States Minor Outlying
+                                            Islands</a></li>
+                                        <li><a>Uruguay</a></li>
+                                        <li><a>Uzbekistan</a></li>
+                                        <li><a>Vanuatu</a></li>
+                                        <li><a>Venezuela</a></li>
+                                        <li><a>Viet Nam</a></li>
+                                        <li><a>Virgin Islands, British</a></li>
+                                        <li><a>Virgin Islands, U.S.</a></li>
+                                        <li><a>Wallis and Futuna</a></li>
+                                        <li><a>Western Sahara</a></li>
+                                        <li><a>Yemen</a></li>
+                                        <li><a>Zambia</a></li>
+                                        <li><a>Zimbabwe</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- end form-group -->
+                        </div>
+                        <input type="checkbox"><label class="checklabel">I have
+                        read and agree to the <a href="#">Terms & Conditions</a>
+                        and <a href="#">Cancellation Policy</a>.</label>
+                        <button type="submit" class="site-btn pull-right">
+                            PAYMENT
+                        </button>
+                    </form>
+                </div>
+                <!-- end passengers-info -->
+            </div>
+            <!-- end col-8 -->
+        </div>
+    </div>
+    <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end checkout -->
+
+<div th:replace="/frontend/fragments/footer :: footer"/>
+
+<!-- JS FILES -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+    // PRELOADER
+    (function ($) {
+        $(window).on("load", function () {
+            $("body").addClass("page-loaded");
+        });
+
+        $(".datepicker__input").daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('.datepicker__input').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+
+        $('.datepicker__input').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+
+
+    })(jQuery)
+</script>
+<script th:src="@{/frontend/js/popper.min.js}"></script>
+<script th:src="@{/frontend/js/bootstrap.min.js}"></script>
+<script th:src="@{/frontend/js/swiper.min.js}"></script>
+<script th:src="@{/frontend/js/wow.min.js}"></script>
+<script th:src="@{/frontend/js/scripts.js}"></script>
+
+
+</body>
+</html>

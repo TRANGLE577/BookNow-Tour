@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="'Book Now System'"></title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <!-- DataTables -->
+    <link rel="stylesheet" th:href="@{/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/menu :: menu"/>
+
+    <div class="card-header">
+        <h3 class="card-title">Form</h3>
+        <div class="card-tools">
+            <a type="button" class="btn btn-block btn-primary" href="/reports/tour">Back</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item">Report</li>
+                            <li class="breadcrumb-item active">Booking</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">DataTables</h3>
+                                <div class="card-tools">
+                                    <!--                                    <button type="button" class="btn btn-block btn-primary">Add New</button>-->
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form id="quickForm" method="post" th:object="${tourDTO}"
+                                      enctype="multipart/form-data">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputName">Name</label>
+                                                    <input disabled=" true" type="text" name="name" class="form-control"
+                                                           id="exampleInputName" placeholder="Enter name"
+                                                           th:field="*{name}">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail">Description</label>
+                                                    <input disabled=" true" type="text" name="description" class="form-control"
+                                                           id="exampleInputEmail" placeholder="Enter description"
+                                                           th:field="*{description}">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputTourDateDepart">Date Depart</label>
+                                                    <input disabled=" true" type="text" name="tourDateDepart" class="form-control"
+                                                           id="exampleInputTourDateDepart"
+                                                           placeholder="Enter Date Depart"
+                                                           th:field="*{cusTourDateDepart}">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputDateReturn">Date Return</label>
+                                                    <input disabled=" true" type="text" name="dateReturn" class="form-control"
+                                                           id="exampleInputDateReturn" placeholder="Enter Date Return"
+                                                           th:field="*{cusTourDateReturn}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <select disabled=" true" class="form-control select2" style="width: 100%;"
+                                                            th:field="*{locationId}">
+                                                        <option th:each="item : ${locations}"
+                                                                th:value="${item.id}"
+                                                                th:text="${item.name}"/>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputAdultCost">Adult Cost</label>
+                                                    <input disabled=" true" type="number" name="tourAdultCost" class="form-control"
+                                                           id="exampleInputAdultCost" placeholder="Enter Adult Cost"
+                                                           th:field="*{tourAdultCost}">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputTourChildrenCost">Children Cost</label>
+                                                    <input disabled=" true" type="number" name="tourChildrenCost" class="form-control"
+                                                           id="exampleInputTourChildrenCost"
+                                                           placeholder="Enter Children Cost"
+                                                           th:field="*{tourChildrenCost}">
+                                                </div>
+
+                                                <div class="form-group mb-0">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input disabled=" true" type="checkbox" name="terms" class="custom-control-input"
+                                                               id="inputCheckFinish" th:checked="${finish}"
+                                                               th:field="*{finish}">
+                                                        <label class="custom-control-label" for="inputCheckFinish">Finish</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-0">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input disabled=" true" type="checkbox" name="terms" class="custom-control-input"
+                                                               id="inputCheck" th:checked="${status}"
+                                                               th:field="*{status}">
+                                                        <label class="custom-control-label"
+                                                               for="inputCheck">Active</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+
+                                    <table id="example1" class="table table-bordered table-striped"
+                                           th:if="${bookings != null}">
+                                        <thead>
+                                        <tr>
+                                            <th>Tour</th>
+                                            <th>Account</th>
+                                            <th>Email</th>
+                                            <th>Payment</th>
+                                            <th>Adult Qty</th>
+                                            <th>Children Qty</th>
+                                            <th>Total Cost</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="item : ${bookings}">
+                                            <td th:text="${item.tour.name}"></td>
+                                            <td th:text="${item.account.fullname}"></td>
+                                            <td th:text="${item.account.email}"></td>
+                                            <td th:text="${item.payment.name}"></td>
+                                            <td th:text="${item.quantityAdult}"></td>
+                                            <td th:text="${item.quantityChildren}"></td>
+                                            <td th:text="${item.totalCost}"></td>
+                                            <td th:switch="${item.status}">
+                                                <p th:case="1">Approved</p>
+                                                <p th:case="0">Waiting</p>
+                                                <p th:case="-1">Cancel</p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Tour</th>
+                                            <th>Account</th>
+                                            <th>Email</th>
+                                            <th>Payment</th>
+                                            <th>Adult Qty</th>
+                                            <th>Children Qty</th>
+                                            <th>Total Cost</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <div th:replace="fragments/footer :: footer"/>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- DataTables  & Plugins -->
+<script th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<!--<script th:src="@{/dist/js/demo.js}"></script>-->
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
+
+</body>
+</html>

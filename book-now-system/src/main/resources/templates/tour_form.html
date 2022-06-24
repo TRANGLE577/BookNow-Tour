@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tour | Travel App</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/menu :: menu"/>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Tour</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Tour</li>
+                            <li class="breadcrumb-item active">Form</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Form</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <form id="quickForm" method="post"
+                                  th:action="@{/masterdata/tours/form/save}"
+                                  th:object="${tourDTO}"
+                                  enctype="multipart/form-data"
+                            >
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="alert alert-warning alert-dismissible col-md-12" th:if="${!errors.isEmpty() && !errors.containsKey('Success') }">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                            <span th:each="err : ${errors}">
+                                                <span th:text="${err.value}"></span>
+                                            </span>
+                                        </div>
+                                        <div class="alert alert-success alert-dismissible col-md-12" th:if="${!errors.isEmpty() && errors.containsKey('Success') }">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                                            <span th:each="err : ${errors}">
+                                                <span th:text="${err.value}"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="exampleInputName">Name</label>
+                                                <input type="text" name="name" class="form-control" id="exampleInputName" placeholder="Enter name" th:field="*{name}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputAvatar">Image</label>
+                                                <input type="file" name="image" class="form-control" id="exampleInputAvatar" accept="image/png, image/jpeg" th:field="*{image}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail">Description</label>
+                                                <input type="text" name="description" class="form-control" id="exampleInputEmail" placeholder="Enter description" th:field="*{description}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputTourDateDepart">Date Depart</label>
+                                                <input type="date" name="tourDateDepart" class="form-control" id="exampleInputTourDateDepart" placeholder="Enter Date Depart" th:field="*{cusTourDateDepart}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputDateReturn">Date Return</label>
+                                                <input type="date" name="dateReturn" class="form-control" id="exampleInputDateReturn" placeholder="Enter Date Return" th:field="*{cusTourDateReturn}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Location</label>
+                                                <select class="form-control select2" style="width: 100%;" th:field="*{locationId}">
+                                                    <option th:each="item : ${locations}"
+                                                            th:value="${item.id}"
+                                                            th:text="${item.name}"/>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputAdultCost">Adult Cost</label>
+                                                <input type="number" name="tourAdultCost" class="form-control" id="exampleInputAdultCost" placeholder="Enter Adult Cost" th:field="*{tourAdultCost}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputTourChildrenCost">Children Cost</label>
+                                                <input type="number" name="tourChildrenCost" class="form-control" id="exampleInputTourChildrenCost" placeholder="Enter Children Cost" th:field="*{tourChildrenCost}">
+                                            </div>
+
+                                            <div class="form-group mb-0">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="terms" class="custom-control-input" id="inputCheckFinish" th:checked="${finish}" th:field="*{finish}">
+                                                    <label class="custom-control-label" for="inputCheckFinish">Finish</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-0">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="terms" class="custom-control-input" id="inputCheck" th:checked="${status}" th:field="*{status}">
+                                                    <label class="custom-control-label" for="inputCheck">Active</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" class="form-control" th:field="*{id}">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <div th:replace="fragments/footer :: footer"/>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/dist/js/demo.js}"></script>
+
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+</body>
+</html>

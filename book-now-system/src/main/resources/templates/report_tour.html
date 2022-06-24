@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tour Report | Book Now System</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <!-- DataTables -->
+    <link rel="stylesheet" th:href="@{/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/menu :: menu"/>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Tour Report</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/static">Home</a></li>
+                            <li class="breadcrumb-item">Report</li>
+                            <li class="breadcrumb-item active">Tour</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">DataTables</h3>
+                                <div class="card-tools">
+<!--                                    <button type="button" class="btn btn-block btn-primary">Add New</button>-->
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="alert alert-warning alert-dismissible col-md-12" th:if="${!errors.isEmpty()}">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                    <span th:each="err : ${errors}">
+                                        <span th:text="${err.value}"></span> <br />
+                                    </span>
+                                </div>
+
+                                <form id="quickForm2" method="get" th:action="@{/reports/tour/view}" th:object="${tourReportDTO}">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Start Date</label>
+                                                    <div class="input-group date" data-target-input="nearest">
+                                                        <input type="date" id="startDate" class="form-control datetimepicker-input" data-target="#reservationdate" th:field="*{startDate}" required/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>End Date</label>
+                                                    <div class="input-group date" data-target-input="nearest">
+                                                        <input type="date" id="endDate" class="form-control datetimepicker-input" data-target="#reservationdate" th:field="*{endDate}" required/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label></label>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Tour</th>
+                                        <th>Image</th>
+                                        <th>Date Depart</th>
+                                        <th>Date Return</th>
+                                        <th>Adult Cost</th>
+                                        <th>Children Cost</th>
+                                        <th>Progress</th>
+                                        <th>Status</th>
+                                        <th>Option</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item : ${tours}">
+                                        <td>
+                                            <a th:text="${item.name}"></a>
+                                            <br/>
+                                            <small th:text="${item.location.name}"></small>
+                                        </td>
+                                        </td>
+                                        <td>
+                                            <img th:src="@{${HOST_URL + item.image}}" width="75" />
+                                        </td>
+                                        <td th:text="${item.tourDateDepart.toString().substring(0, 10)}"></td>
+                                        <td th:text="${item.tourDateReturn.toString().substring(0, 10)}"></td>
+
+                                        <td th:text="${item.tourAdultCost}"></td>
+                                        <td th:text="${item.tourChildrenCost}"></td>
+                                        <td th:switch="${item.isFinish}">
+                                            <p th:case="true">Complete</p>
+                                            <p th:case="false">InProgress</p>
+                                        </td>
+                                        <td th:switch="${item.status}">
+                                            <p th:case="true">Active</p>
+                                            <p th:case="false">Inactive</p>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary" th:href="@{'/reports/tour/view/' + ${item.id}}">
+                                                View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Tour</th>
+                                        <th>Image</th>
+                                        <th>Date Depart</th>
+                                        <th>Date Return</th>
+                                        <th>Adult Cost</th>
+                                        <th>Children Cost</th>
+                                        <th>Progress</th>
+                                        <th>Status</th>
+                                        <th>Option</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <div th:replace="fragments/footer :: footer"/>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- DataTables  & Plugins -->
+<script th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{/plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{/plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<!--<script th:src="@{/dist/js/demo.js}"></script>-->
+<!-- Page specific script -->
+<script>
+    $(function () {
+        const checkindate = document.getElementById("checkindate");
+        const checkoutdate = document.getElementById("checkoutdate");
+        var message = 'Reporting date: from ' + checkindate.value + ' to '+ checkoutdate.value;
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": [
+                "copy",
+                "csv",
+                {
+                    extend: 'excel',
+                    messageTop: message,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    messageTop: message,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                    }
+                },
+                {
+                    extend: 'print',
+                    messageTop: message,
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+                    }
+                },
+                "colvis"
+            ]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
+
+</body>
+</html>

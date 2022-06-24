@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Frolic | for Tour Operators & Travel Agencies</title>
+    <meta name="author" content="GFX Partner">
+    <meta name="description"
+          content="Frolic | for Tour Operators & Travel Agencies">
+    <meta name="keywords"
+          content="tour, ice, trip, travel, agency, life, vacation, treking, boat, walking, climbing, transition, svg, html, css">
+
+    <!-- FAVICON FILES -->
+    <link th:href="@{/frontend/ico/apple-touch-icon-144-precomposed.png}"
+          rel="apple-touch-icon" sizes="144x144">
+    <link th:href="@{/frontend/ico/apple-touch-icon-114-precomposed.png}"
+          rel="apple-touch-icon" sizes="114x114">
+    <link th:href="@{/frontend/ico/apple-touch-icon-72-precomposed.png}"
+          rel="apple-touch-icon" sizes="72x72">
+    <link th:href="@{/frontend/ico/apple-touch-icon-57-precomposed.png}"
+          rel="apple-touch-icon">
+    <link th:href="@{/frontend/ico/favicon.png}" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" th:href="@{/frontend/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/daterangepicker.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/style.css}">
+</head>
+<body>
+<div th:replace="/frontend/fragments/header :: header"/>
+
+<section class="welcome-intro" id="counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Welcome to Frolic!</h2>
+                    <img src="images/title-seperator.png" alt="Image">
+                    <p>Pellentesque vestibulum fermentum velit non placerat
+                        aecenas in hendrerit justo quisque quis rhoncus exeget
+                        semper semlam at lobortis velit. Vestibulum ante ipsum
+                        primis in faucibus orcie luctus et ultrices posuere
+                        cubilia curae ed dignissim leo lorema intum mauris
+                        vestibulum et maecenas vitae urna aced magna facilisis
+                        porttitor.</p>
+                    <h4>Guiding with Passion Since 1988</h4>
+                </div>
+                <!-- end section-title -->
+            </div>
+            <!-- end col-12 -->
+            <div class="col-lg-3 col-md-6 text-center border-right">
+                <figure>
+                    <div><img src="images/intro-icon01.png" alt="Image"></div>
+                </figure>
+                <h5>TOURS</h5>
+                <span class="odometer" id="1"></span>
+                <a href="#" class="read-more">READ MORE</a>
+            </div>
+            <!-- end col-3 -->
+            <div class="col-lg-3 col-md-6 text-center border-right">
+                <figure>
+                    <div><img src="images/intro-icon02.png" alt="Image"></div>
+                </figure>
+                <h5>KAYAKING</h5>
+                <span class="odometer" id="2"></span>
+                <a href="#" class="read-more">READ MORE</a>
+            </div>
+            <!-- end col-3 -->
+            <div class="col-lg-3 col-md-6 text-center border-right">
+                <figure>
+                    <div><img src="images/intro-icon03.png" alt="Image"></div>
+                </figure>
+                <h5>PHOTOS TAKEN</h5>
+                <span class="odometer" id="3"></span>
+                <a href="#" class="read-more">READ MORE</a>
+            </div>
+            <!-- end col-3 -->
+            <div class="col-lg-3 col-md-6 text-center">
+                <figure>
+                    <div><img src="images/intro-icon04.png" alt="Image"></div>
+                </figure>
+                <h5>SIGHTS SEEN</h5>
+                <span class="odometer" id="4"></span>
+                <a href="#" class="read-more">READ MORE</a>
+            </div>
+            <!-- end col-3 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<!-- tours-grid -->
+<section class="tours-list tours tours-list-section tours">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Tours</h2>
+                    <img th:src="@{/frontend/images/title-seperator.png}"
+                         alt="Image"></div>
+                <!-- end section-title -->
+                <ul class="view-type tour-view-type">
+                    <li><a href="#" class="tour-list-icon"><i
+                            class="fa fa-align-justify"></i></a></li>
+                    <li><a href="#" class="tour-grid-icon"><i
+                            class="fa fa-th"></i></a></li>
+                </ul>
+            </div>
+            <!-- end col-12 -->
+            <div class="col-12 column" th:each="item : ${tours}">
+                <div class="tour-box-list t-box">
+                    <figure><img th:src="${item.image}" alt="Image"><span
+                            class="tag">MOST POPULAR</span></figure>
+                    <div class="tour-content">
+                        <span class="tag">MOST POPULAR</span>
+                        <small>FROM SKAFTAFELL</small>
+                        <h3 th:text="${item.name}"></h3>
+                        <p th:text="${item.description}"></p>
+                        <div class="inner">
+                            <ul>
+                                <li>
+                                    <div><img
+                                            th:src="@{/frontend/images/icon-date.png}"
+                                            alt="Image">
+                                        <small>AVAILABLE</small>
+                                        <span>ALL YEAR</span></div>
+                                </li>
+                                <li>
+                                    <div><img
+                                            th:src="@{/frontend/images/icon-time.png}"
+                                            alt="Image">
+                                        <small>DURATION</small> <span
+                                                th:text="${item.tourDateDepart}"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div><img
+                                            th:src="@{/frontend/images/icon-tag.png}"
+                                            alt="Image"> <small>FROM
+                                    </small> <span
+                                            th:text="'$'+ ${item.tourAdultCost}">
+                                </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a th:href="@{'/detail/' + ${item.id}}">SELECT
+                                DATES</a>
+                        </div>
+                        <!-- end inner -->
+                    </div>
+                    <!-- end tour-content -->
+                </div>
+                <!-- end tour-box -->
+            </div>
+
+            <!-- end col-12 -->
+            <div class="col-12 text-center"><a href="#" class="site-btn">LOAD
+                MORE</a></div>
+            <!-- end col-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end tours-grid -->
+
+<section class="related-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Related Blog Posts</h2>
+                    <img src="images/title-seperator.png" alt="Image"></div>
+                <!-- end section-title -->
+            </div>
+            <!-- end col-12 -->
+            <div class="col-lg-6">
+                <div class="blog-post">
+                    <figure class="post-image"><img
+                            src="images/relatedblog_thumb01.jpg" alt="Image">
+                    </figure>
+                    <div class="post-content"><small>2018-03-02 <span>|</span>BY
+                        GFXPARTNER</small>
+                        <a href="blog-single.html"><h3>An Enchanted Ice Cave in
+                            Midst of Denmark</h3></a>
+                        <a href="blog-single.html" class="read-more">READ
+                            MORE</a></div>
+                    <!-- end post-content -->
+                </div>
+                <!-- end blog-post -->
+            </div>
+            <!-- end col-6 -->
+            <div class="col-lg-6">
+                <div class="blog-post">
+                    <figure class="post-image"><img
+                            src="images/relatedblog_thumb02.jpg" alt="Image">
+                    </figure>
+                    <div class="post-content"><small>2018-03-02 <span>|</span>BY
+                        GFXPARTNER</small>
+                        <a href="blog-single.html"><h3>An Enchanted Ice Cave in
+                            Midst of Denmark</h3></a>
+                        <a href="blog-single.html" class="read-more">READ
+                            MORE</a></div>
+                    <!-- end post-content -->
+                </div>
+                <!-- end blog-post -->
+            </div>
+            <!-- end col-6 -->
+            <div class="col-lg-6">
+                <div class="blog-post">
+                    <figure class="post-image"><img
+                            src="images/relatedblog_thumb03.jpg" alt="Image">
+                    </figure>
+                    <div class="post-content"><small>2018-03-02 <span>|</span>BY
+                        GFXPARTNER</small>
+                        <a href="blog-single.html"><h3>An Enchanted Ice Cave in
+                            Midst of Denmark</h3></a>
+                        <a href="blog-single.html" class="read-more">READ
+                            MORE</a></div>
+                    <!-- end post-content -->
+                </div>
+                <!-- end blog-post -->
+            </div>
+            <!-- end col-6 -->
+            <div class="col-lg-6">
+                <div class="blog-post">
+                    <figure class="post-image"><img
+                            src="images/relatedblog_thumb04.jpg" alt="Image">
+                    </figure>
+                    <div class="post-content"><small>2018-03-02 <span>|</span>BY
+                        GFXPARTNER</small>
+                        <a href="blog-single.html"><h3>An Enchanted Ice Cave in
+                            Midst of Denmark</h3></a>
+                        <a href="blog-single.html" class="read-more">READ
+                            MORE</a></div>
+                    <!-- end post-content -->
+                </div>
+                <!-- end blog-post -->
+            </div>
+            <!-- end col-6 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<div th:replace="/frontend/fragments/footer :: footer"/>
+
+<!-- JS FILES -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+    // PRELOADER
+    (function ($) {
+        $(window).on("load", function () {
+            $("body").addClass("page-loaded");
+        });
+
+        $(".datepicker__input").daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('.datepicker__input').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+
+        $('.datepicker__input').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+
+
+    })(jQuery)
+</script>
+<script th:src="@{/frontend/js/popper.min.js}"></script>
+<script th:src="@{/frontend/js/bootstrap.min.js}"></script>
+<script th:src="@{/frontend/js/swiper.min.js}"></script>
+<script th:src="@{/frontend/js/wow.min.js}"></script>
+<script th:src="@{/frontend/js/scripts.js}"></script>
+
+
+</body>
+</html>

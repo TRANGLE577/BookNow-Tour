@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Frolic | for Tour Operators & Travel Agencies</title>
+    <meta name="author" content="GFX Partner">
+    <meta name="description"
+          content="Frolic | for Tour Operators & Travel Agencies">
+    <meta name="keywords"
+          content="tour, ice, trip, travel, agency, life, vacation, treking, boat, walking, climbing, transition, svg, html, css">
+
+    <!-- FAVICON FILES -->
+    <link th:href="@{/frontend/ico/apple-touch-icon-144-precomposed.png}"
+          rel="apple-touch-icon" sizes="144x144">
+    <link th:href="@{/frontend/ico/apple-touch-icon-114-precomposed.png}"
+          rel="apple-touch-icon" sizes="114x114">
+    <link th:href="@{/frontend/ico/apple-touch-icon-72-precomposed.png}"
+          rel="apple-touch-icon" sizes="72x72">
+    <link th:href="@{/frontend/ico/apple-touch-icon-57-precomposed.png}"
+          rel="apple-touch-icon">
+    <link th:href="@{/frontend/ico/favicon.png}" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" th:href="@{/frontend/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/daterangepicker.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/frontend/css/style.css}">
+</head>
+<body>
+<div th:replace="/frontend/fragments/menu :: menu"></div>
+
+<!-- tours-header -->
+<section class="tour-single-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h6>FROM SKAGEN</h6>
+                <h2 th:text="${tour.name}"></h2>
+                <div class="filter dropdown">
+                    <a href="#" data-toggle="dropdown"
+                       th:text="${tour.tourDateDepart.getMinutes() +':' + tour.tourDateDepart.getHours()}">
+                    </a>
+                </div>
+                <!-- end filter -->
+                <div class="filter data-range-picker">
+                    <a href="#" data-toggle="dropdown"
+                       th:text="${tour.tourDateDepart.getDay() +'/' +tour.tourDateDepart.getMonth() + '/' + tour.tourDateDepart.getYear()}"></a>
+                </div>
+                <!-- end filter -->
+                <div class="price">Price: <strong>$102.18</strong></div>
+                <!-- end price -->
+            </div>
+            <!-- end col-8 -->
+            <div class="col-lg-4">
+                <p>Arci varius natoque penatibus et magnis dis turient montes
+                    scetur ridiculus mus cras eleifend.</p>
+                <p>Tour Code: <strong>WS-3597</strong></p>
+
+                <!-- end filter -->
+                <div class="filter p-0 ">
+                    <ul class="dropdown-check passenger-dropdown m-0">
+                        <li style="list-style: none;">
+                            <div>
+                                <h6>ADULTS <span>[16+]</span></h6>
+                                <span th:text="'$' + ${tour.tourAdultCost}"></span>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li><i class="fa fa-minus"></i></li>
+                                    <li>1</li>
+                                    <li><i class="fa fa-plus"></i></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li style="list-style: none;">
+                            <div>
+                                <h6>CHILDREN <span>[10 - 15]</span></h6>
+                                <span
+                                        th:text="'$' + ${tour.tourChildrenCost}"></span>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li><i class="fa fa-minus"></i></li>
+                                    <li>1</li>
+                                    <li><i class="fa fa-plus"></i></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li style="list-style: none;">
+                            <div>
+                                <span><i class="fa fa-times"></i>CLEAR</span>
+                                <span><i class="fa fa-check"></i>APPLY</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#" class="site-btn">BOOK TOUR</a>
+            </div>
+            <!-- end col-4 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end tours-header -->
+
+<!-- tour-desc -->
+<section class="tour-desc">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h2 th:text="${tour.name}"></h2>
+                    <img th:src="${tour.image}" alt="Image">
+                </div>
+                <!-- end section-title -->
+            </div>
+            <!-- end col-12 -->
+            <div class="col-lg-6">
+                <p th:text="${tour.description}"></p>
+            </div>
+            <!-- end col-6 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end tour-desc -->
+
+<!-- tour-location -->
+<section class="tour-location">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Tour Map and Itinerary</h2>
+                    <img th:src="${tour.image}" alt="Image">
+                </div>
+                <!-- end section-title -->
+            </div>
+            <!-- end col-12 -->
+            <div class="col-12">
+                <div class="tabs">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#tab1" data-toggle="tab" class="active">DAY
+                            01</a></li>
+                        <li><a href="#tab2" data-toggle="tab">DAY 02</a></li>
+                        <li><a href="#tab3" data-toggle="tab">DAY 03</a></li>
+                        <li><a href="#tab4" data-toggle="tab">DAY 04</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1">
+                            <div class="inner">
+                                <div class="content">
+                                    <h6>getting started</h6>
+                                    <h3>Take a Walk on the Green Side</h3>
+                                    <img src="images/title-seperator.png"
+                                         alt="Image" class="title-seperator">
+                                    <p>Orci varius natoque penatibus et magnis
+                                        dis ient montes nascetur ridiculus mus
+                                        cras eleifend lus sed congue ectetur
+                                        velit upis faucibus odio eget mus cras
+                                        volutpat.</p>
+                                    <p>Pellentesque vestibulum fermentum velit
+                                        non placerat aecenas in hendrerit justo
+                                        que quis ncus exeget semper semlam
+                                        atortis velit. Vestibulum ante ipsum
+                                        primis inucibus orcie luctus et trices
+                                        posuere cubilia.</p>
+                                    <p>Fusce in eros at lectus mollis pulvinar
+                                        ullam in auctor mimus consectetur
+                                        ullamcorper facisis vivamus luctus.</p>
+                                    <p>Placerat aecenas in hendrerit justo que
+                                        quis ncus exeget semper semlam atortis
+                                        velit. Vestibulum ante ipsum primis
+                                        inucibus orcie luctus et trices posuere
+                                        cubilia.</p>
+                                </div>
+                                <!-- end content -->
+                                <div class="map-style" id="map2"></div>
+                                <!-- end map -->
+                            </div>
+                            <!-- end inner -->
+                        </div>
+                        <!-- end tab-pane -->
+                        <div class="tab-pane fade" id="tab2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h6>getting started</h6>
+                                    <h3>Ice Treking and Walk on the Green
+                                        Side</h3>
+                                    <img src="images/title-seperator.png"
+                                         alt="Image" class="title-seperator">
+                                    <p>Orci varius natoque penatibus et magnis
+                                        dis ient montes nascetur ridiculus mus
+                                        cras eleifend lus sed congue ectetur
+                                        velit upis faucibus odio eget mus cras
+                                        volutpat.</p>
+                                    <p>Pellentesque vestibulum fermentum velit
+                                        non placerat aecenas in hendrerit justo
+                                        que quis ncus exeget semper semlam
+                                        atortis velit. Vestibulum ante ipsum
+                                        primis inucibus orcie luctus et trices
+                                        posuere cubilia.</p>
+                                    <p>Fusce in eros at lectus mollis pulvinar
+                                        ullam in auctor mimus consectetur
+                                        ullamcorper facisis vivamus luctus.</p>
+                                    <p>Placerat aecenas in hendrerit justo que
+                                        quis ncus exeget semper semlam atortis
+                                        velit. Vestibulum ante ipsum primis
+                                        inucibus orcie luctus et trices posuere
+                                        cubilia.</p>
+                                </div>
+                                <!-- end content -->
+                                <div class="map-style" id="map3"></div>
+                                <!-- end map -->
+                            </div>
+                            <!-- end inner -->
+                        </div>
+                        <!-- end tab-pane -->
+                        <div class="tab-pane fade" id="tab3">
+                            <div class="inner">
+                                <div class="content">
+                                    <h6>getting started</h6>
+                                    <h3>Kayarakking on the Green Side</h3>
+                                    <img src="images/title-seperator.png"
+                                         alt="Image" class="title-seperator">
+                                    <p>Orci varius natoque penatibus et magnis
+                                        dis ient montes nascetur ridiculus mus
+                                        cras eleifend lus sed congue ectetur
+                                        velit upis faucibus odio eget mus cras
+                                        volutpat.</p>
+                                    <p>Pellentesque vestibulum fermentum velit
+                                        non placerat aecenas in hendrerit justo
+                                        que quis ncus exeget semper semlam
+                                        atortis velit. Vestibulum ante ipsum
+                                        primis inucibus orcie luctus et trices
+                                        posuere cubilia.</p>
+                                    <p>Fusce in eros at lectus mollis pulvinar
+                                        ullam in auctor mimus consectetur
+                                        ullamcorper facisis vivamus luctus.</p>
+                                    <p>Placerat aecenas in hendrerit justo que
+                                        quis ncus exeget semper semlam atortis
+                                        velit. Vestibulum ante ipsum primis
+                                        inucibus orcie luctus et trices posuere
+                                        cubilia.</p>
+                                </div>
+                                <!-- end content -->
+                                <div class="map-style" id="map4"></div>
+                                <!-- end map -->
+                            </div>
+                            <!-- end inner -->
+                        </div>
+                        <!-- end tab-pane -->
+                        <div class="tab-pane fade" id="tab4">
+                            <div class="inner">
+                                <div class="content">
+                                    <h6>getting started</h6>
+                                    <h3>Climbing and Walking on the Green
+                                        Side</h3>
+                                    <img src="images/title-seperator.png"
+                                         alt="Image" class="title-seperator">
+                                    <p>Orci varius natoque penatibus et magnis
+                                        dis ient montes nascetur ridiculus mus
+                                        cras eleifend lus sed congue ectetur
+                                        velit upis faucibus odio eget mus cras
+                                        volutpat.</p>
+                                    <p>Pellentesque vestibulum fermentum velit
+                                        non placerat aecenas in hendrerit justo
+                                        que quis ncus exeget semper semlam
+                                        atortis velit. Vestibulum ante ipsum
+                                        primis inucibus orcie luctus et trices
+                                        posuere cubilia.</p>
+                                    <p>Fusce in eros at lectus mollis pulvinar
+                                        ullam in auctor mimus consectetur
+                                        ullamcorper facisis vivamus luctus.</p>
+                                    <p>Placerat aecenas in hendrerit justo que
+                                        quis ncus exeget semper semlam atortis
+                                        velit. Vestibulum ante ipsum primis
+                                        inucibus orcie luctus et trices posuere
+                                        cubilia.</p>
+                                </div>
+                                <!-- end content -->
+                                <div class="map-style" id="map5"></div>
+                                <!-- end map -->
+                            </div>
+                            <!-- end inner -->
+                        </div>
+                        <!-- end tab-pane -->
+                    </div>
+                </div>
+                <!-- end tabs -->
+            </div>
+            <!-- end col-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end tour-location -->
+
+<!-- related-tours -->
+<section class="related-tours">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Related Tours</h2>
+                    <img src="images/title-seperator.png" alt="Image"></div>
+                <!-- end section-title -->
+            </div>
+            <!-- end col-12 -->
+            <div class="col-lg-4" th:each="item : ${tours}">
+                <div class="tour-box">
+                    <figure><img th:src="${item.image}" alt="Image">
+                    </figure>
+                    <div class="tour-content"><small>FROM SKAFTAFELL</small>
+                        <h3 th:text="${item.name}"></h3>
+                        <ul>
+                            <li>
+                                <div><img
+                                        th:src="@{/frontend/images/icon-date.png}"
+                                        alt="Image">
+                                    <small>AVAILABLE</small>
+                                    <span>ALL YEAR</span></div>
+                            </li>
+                            <li>
+                                <div><img
+                                        th:src="@{/frontend/images/icon-time.png}"
+                                        alt="Image">
+                                    <small>DURATION</small> <span
+                                            th:text="${tour.tourDateDepart.getDay() +'/' +tour.tourDateDepart.getMonth() + '/' + (tour.tourDateDepart.getYear() + 1900)}"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div><img
+                                        th:src="@{/frontend/images/icon-tag.png}"
+                                        alt="Image"> <small>FROM
+                                </small> <span
+                                        th:text="'$'+ ${item.tourAdultCost}">
+                                </span>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="#">SELECT DATES</a></div>
+                    <!-- end tour-content -->
+                </div>
+                <!-- end tour-box -->
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end related-tours -->
+
+
+<div th:replace="/frontend/fragments/footer :: footer"/>
+
+<!-- JS FILES -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+    // PRELOADER
+    (function ($) {
+        $(window).on("load", function () {
+            $("body").addClass("page-loaded");
+        });
+
+        $(".datepicker__input").daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('.datepicker__input').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+
+        $('.datepicker__input').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+
+
+    })(jQuery)
+</script>
+<script th:src="@{/frontend/js/popper.min.js}"></script>
+<script th:src="@{/frontend/js/bootstrap.min.js}"></script>
+<script th:src="@{/frontend/js/swiper.min.js}"></script>
+<script th:src="@{/frontend/js/wow.min.js}"></script>
+<script th:src="@{/frontend/js/scripts.js}"></script>
+
+
+</body>
+</html>

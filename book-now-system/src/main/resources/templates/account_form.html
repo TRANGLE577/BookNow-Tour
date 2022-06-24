@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Account | Travel App</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/menu :: menu"/>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Account</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Account</li>
+                            <li class="breadcrumb-item active">Form</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Form</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <form id="quickForm" method="post" th:action="@{/masterdata/accounts/form/save}" th:object="${accountDTO}">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="alert alert-warning alert-dismissible col-md-12" th:if="${!errors.isEmpty() && !errors.containsKey('Success') }">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                            <span th:each="err : ${errors}">
+                                                <span th:text="${err.value}"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputName">Full Name</label>
+                                                <input type="text" name="fullname" class="form-control" id="exampleInputName" placeholder="Enter full name" th:field="*{fullname}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername">User Name</label>
+                                                <input type="text" name="username" class="form-control" id="exampleInputUsername" placeholder="Enter username" th:field="*{username}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail">Email</label>
+                                                <input type="email" name="email" class="form-control" id="exampleInputEmail" placeholder="Enter email" th:field="*{email}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Role</label>
+                                                <select class="form-control select2" style="width: 100%;" th:field="*{roleId}">
+                                                    <option th:each="item : ${roles}"
+                                                            th:value="${item.id}"
+                                                            th:text="${item.name}"/>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="terms" class="custom-control-input" id="inputCheck" th:checked="${status}" th:field="*{status}">
+                                                    <label class="custom-control-label" for="inputCheck">Active</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" class="form-control" th:field="*{id}">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <div th:replace="fragments/footer :: footer"/>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/dist/js/demo.js}"></script>
+
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+</body>
+</html>

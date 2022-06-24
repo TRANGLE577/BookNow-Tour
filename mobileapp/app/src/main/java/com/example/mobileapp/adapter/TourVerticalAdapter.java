@@ -1,0 +1,82 @@
+package com.example.mobileapp.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mobileapp.R;
+import com.example.mobileapp.model.Tour;
+import com.example.mobileapp.ui.DetailActivity;
+import com.example.mobileapp.util.ContantUtil;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+public class TourVerticalAdapter extends RecyclerView.Adapter<TourVerticalAdapter.TopPlacesViewHolder> {
+
+    private Context context;
+    private List<Tour> tourList;
+
+    public TourVerticalAdapter(Context context, List<Tour> tourList) {
+        this.context = context;
+        this.tourList = tourList;
+    }
+
+    @NonNull
+    @Override
+    public TopPlacesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.row_item_vertical, parent, false);
+        return new TopPlacesViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull TopPlacesViewHolder holder, int position) {
+        Tour tour = tourList.get(position);
+        holder.tvName.setText(tour.getName());
+        Picasso.with(context).load(ContantUtil.HOST_URL + "/" +tour.getImage()).into(holder.imgImage);
+        holder.tvLocation.setText("Địa điểm: " + tour.getLocation().getName());
+        holder.tvPriceAdult.setText("Vé người lớn: " + tour.getTourAdultCost());
+        holder.tvPriceChildren.setText("Vé trẻ em: " + tour.getTourChildrenCost());
+
+        holder.imgShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(context, DetailActivity.class);
+                i.putExtra("tourId",tour.getId());
+                context.startActivity(i);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        if (tourList == null) {
+            return 0;
+        }
+        return tourList.size();
+    }
+
+    public static final class TopPlacesViewHolder extends RecyclerView.ViewHolder {
+
+        private ImageView imgImage, imgShow;
+        private TextView tvName, tvLocation, tvPriceAdult, tvPriceChildren;
+
+        public TopPlacesViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            imgImage = itemView.findViewById(R.id.imgImage);
+            imgShow = itemView.findViewById(R.id.imgShow);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvLocation = itemView.findViewById(R.id.tvLocation);
+            tvPriceAdult = itemView.findViewById(R.id.tvPriceAdult);
+            tvPriceChildren = itemView.findViewById(R.id.tvPriceChildren);
+        }
+    }
+}

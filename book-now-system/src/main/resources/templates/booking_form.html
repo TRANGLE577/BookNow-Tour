@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Booking | Travel App</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/menu :: menu"/>
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Booking</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Booking</li>
+                            <li class="breadcrumb-item active">Form</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Form</h3>
+                                <div class="card-tools">
+                                    <a type="button" class="btn btn-block btn-primary" href="/masterdata/bookings/">Back</a>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <form id="quickForm" method="post"
+                                  th:action="@{/masterdata/bookings/back}"
+                                  th:object="${bookingDTO}"
+                                  enctype="multipart/form-data"
+                            >
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="alert alert-warning alert-dismissible col-md-12" th:if="${!errors.isEmpty() && !errors.containsKey('Success') }">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                            <span th:each="err : ${errors}">
+                                                <span th:text="${err.value}"></span>
+                                            </span>
+                                        </div>
+                                        <div class="alert alert-success alert-dismissible col-md-12" th:if="${!errors.isEmpty() && errors.containsKey('Success') }">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                                            <span th:each="err : ${errors}">
+                                                <span th:text="${err.value}"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="accountName">Account</label>
+                                                <input disabled="true" type="text" name="name" class="form-control" id="accountName" placeholder="Enter name" th:field="*{account.fullname}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tourName">Tour</label>
+                                                <input disabled="true" type="text" name="name" class="form-control" id="tourName" placeholder="Enter name" th:field="*{tour.name}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="examplePaymentname">Payment</label>
+                                                <input disabled="true" type="text" name="description" class="form-control" id="examplePaymentname" placeholder="Enter description" th:field="*{payment.name}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="tourAdultCost">Adult Cost</label>
+                                                <input disabled="true" type="number" name="tourAdultCost" class="form-control" id="tourAdultCost" placeholder="Enter Adult Cost" th:field="*{tourAdultCost}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tourChildrenCost">Children Cost</label>
+                                                <input disabled="true" type="number" name="tourChildrenCost" class="form-control" id="tourChildrenCost" placeholder="Enter Children Cost" th:field="*{tourChildrenCost}">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="accountName">Email</label>
+                                                <input disabled="true" type="email" name="email" class="form-control" id="accountEmail" placeholder="Enter email" th:field="*{account.email}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Location</label>
+                                                <select disabled="true" class="form-control select2" style="width: 100%;" th:field="*{tour.locationId}">
+                                                    <option th:each="item : ${locations}"
+                                                            th:value="${item.id}"
+                                                            th:text="${item.name}"/>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="quantityChildren">Quantity Children</label>
+                                                <input disabled="true" type="number" name="quantityChildren" class="form-control" id="quantityChildren" placeholder="Enter description" th:field="*{quantityChildren}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="quantityAdult">Quantity Adult</label>
+                                                <input disabled="true" type="number" name="quantityAdult" class="form-control" id="quantityAdult" placeholder="Enter description" th:field="*{quantityAdult}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="totalCost">Total Cost</label>
+                                                <input disabled="true" type="number" name="totalCost" class="form-control" id="totalCost" placeholder="Enter description" th:field="*{totalCost}">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" class="form-control" th:field="*{id}">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <div th:replace="fragments/footer :: footer"/>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/dist/js/demo.js}"></script>
+
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+</body>
+</html>
